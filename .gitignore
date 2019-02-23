@@ -1,0 +1,13 @@
+*.pyc
+*.bin
+__pycache__
+.idea
+.DS_Store
+.so
+.swp
+log.txt
+eval.txt
+*.log
+*~
+core
+run

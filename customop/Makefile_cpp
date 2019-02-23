@@ -1,0 +1,12 @@
+TF_INC = -I/home/vghost/tensorflow/bazel-genfiles -I/home/vghost/tensorflow -I/home/vghost/tensorflow/bazel-tensorflow/external/eigen_archive -I/home/vghost/tensorflow/bazel-tensorflow/external/com_google_absl -I/home/vghost/tfinclude/a
+TF_LIB = "/home/vghost/tensorflow/bazel-bin/tensorflow"
+all: clean build
+
+build: libcustomop.so
+
+libcustomop.so: customop.cpp
+	echo $^
+	g++ -std=c++14 -Wno-ignored-attributes -Wno-unused-result  -shared -g -o $@ $^  $(TF_INC) -fPIC -D_GLIBCXX_USE_CXX11_ABI=0 -L${TF_LIB} -ltensorflow_framework 
+
+clean:
+	rm -f *.o *.so *.pyc *.npy
